@@ -1,10 +1,16 @@
 import './App.css'
+import Title from './Components/Title.jsx'
 
 function App() {
   
 
   return (
-    <div>Hello world!</div>
+    <div>
+      <Title title = "App"></Title>
+      Hello world!<br/>
+    
+    </div>
+  
   )
 }
 
