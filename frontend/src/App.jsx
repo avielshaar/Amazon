@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import {HomePage} from './Pages/HomePage.jsx'
 import Footer from './Components/Shared/Footer'
+import Header from './Components/Shared/Header.jsx'
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className='d-flex flex-column side-allPage min-width'>
-        {/* <Header/> */}
+        <Header/>
         <main>
           <Container className='mt-3'>
             <Routes>
