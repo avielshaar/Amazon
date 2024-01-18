@@ -4,6 +4,7 @@ import homePageReducer from '../Reducers/homePageReducer'
 import axios from 'axios'
 import Loading from '../Components/Shared/Loading'
 import MessageBox from '../Components/Shared/MessageBox'
+import Products from '../Components/HomePage/Products'
 
 const initialState = {loading:true, error: "", data: []};
 export const HomePage = () => {
@@ -30,7 +31,7 @@ export const HomePage = () => {
       </div>
       <div className="products">
         {loading? <Loading/> : error? <MessageBox variant="danger">{error}</MessageBox>:(
-          <Products></Products>
+          <Products products={data}></Products>
         )}
       </div>
         

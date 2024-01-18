@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
 const Product = ({product}) => {
@@ -12,7 +13,10 @@ const Product = ({product}) => {
             <Link to={`/product/${product.token}`}>
                 <Card.Title>{product.title}</Card.Title>
             </Link>
-            
+            {/* <Rating/> */}
+            <Card.Text>${product.price}</Card.Text>
+            {product.countInStock===0?<Button variant='light' disabled>Out of Stock</Button>:
+            <Button className='btn-primary'>Add to Cart</Button>}
         </Card.Body>
     </Card>
   )
