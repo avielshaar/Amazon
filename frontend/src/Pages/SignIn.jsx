@@ -2,6 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import Container from "react-bootstrap/Container"
 import Title from "../Components/Shared/Title"
+import { Form } from "react-router-dom"
 
 const SignIn = () => {
   const [email, setEmail] = useState("")
@@ -20,6 +21,13 @@ const SignIn = () => {
   return (
     <Container className="small-container">
       <Title title="SignIn Page"/>
+      <h1 className="my-3">Sign In</h1>
+      <Form onSubmit={submitHandler}>
+        <Form.Group className="mb-3">
+          <Form.Label>Email</Form.Label>
+          <Form.Control required onChange={(e) => setEmail(e.target.value)} placeholder="example@example.com"></Form.Control>
+        </Form.Group>
+      </Form>
     </Container>
   )
 }
