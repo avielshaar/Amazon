@@ -4,4 +4,8 @@ const getError = (error) => {
     : error.message;
 };
 
-export { getError };
+const addToCartHandler = (product, cartItems, ctxDispatch) => {
+  return; // will implement on Thursday
+};
+
+export { getError, addToCartHandler };
