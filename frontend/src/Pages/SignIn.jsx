@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import Container from "react-bootstrap/Container"
+import Title from "../Components/Shared/Title"
 
 const SignIn = () => {
   const [email, setEmail] = useState("")
@@ -17,7 +18,9 @@ const SignIn = () => {
     
   }
   return (
-    <Container></Container>
+    <Container className="small-container">
+      <Title title="SignIn Page"/>
+    </Container>
   )
 }
 
