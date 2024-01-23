@@ -32,7 +32,7 @@ const Product = ({ product }) => {
           <Button
             className="btn-primary"
             onClick={() => {
-              addToCartHandler(product, cartItems, ctxDispatch); 
+              addToCartHandler(product, cartItems, ctxDispatch);
             }}
           >
             Add to Cart
