@@ -6,9 +6,14 @@ import SearchBox from "./SearchBox";
 import { NavDropdown } from "../../imports";
 import { useContext } from "react";
 import { Store } from "../../Store";
+import { USER_SIGNOUT } from "../../actions";
 const Header = () => {
-  const { state } = useContext(Store);
+  const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
+  const signoutHandler = () => {
+    ctxDispatch({type: USER_SIGNOUT})
+    localStorage.removeItem('userInfo');
+  }
   return (
     <header>
       <NavBar bg="dark" variant="dark">
@@ -31,7 +36,7 @@ const Header = () => {
           {userInfo ? (
             <NavDropdown className="text-white" title={userInfo.name}>
               <NavDropdown.Divider />
-              <Link to="#signout" className="dropdown item">
+              <Link to="#signout" onClick={signoutHandler} className="dropdown item">
                 Sign out
               </Link>
             </NavDropdown>
