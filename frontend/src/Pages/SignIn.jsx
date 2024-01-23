@@ -3,7 +3,8 @@ import axios from "axios"
 import Container from "react-bootstrap/Container"
 import Title from "../Components/Shared/Title"
 import Form from "react-bootstrap/Form"
-import { Button, Link } from "../imports"
+import { Button, Link, toast } from "../imports"
+import { getError } from "../utils"
 
 const SignIn = () => {
   const [email, setEmail] = useState("")
@@ -15,7 +16,7 @@ const SignIn = () => {
       const {data} = await axios.post("/api/v1/users/signin",{email: email, password: password});
       console.log(data);
     } catch (error) {
-      console.log(error.response.data.message);
+      toast.error(getError(error));
     }
     
   }
