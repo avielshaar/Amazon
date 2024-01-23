@@ -5,16 +5,19 @@ import Title from "../Components/Shared/Title"
 import Form from "react-bootstrap/Form"
 import { Button, Link, toast } from "../imports"
 import { getError } from "../utils"
+import { useNavigate } from "react-router-dom"
 
 const SignIn = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
       const {data} = await axios.post("/api/v1/users/signin",{email: email, password: password});
-      console.log(data);
+      localStorage.setItem("userInfo", JSON.stringify(data))
+      navigate("/")
     } catch (error) {
       toast.error(getError(error));
     }
