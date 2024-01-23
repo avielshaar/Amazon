@@ -3,6 +3,7 @@ import axios from "axios"
 import Container from "react-bootstrap/Container"
 import Title from "../Components/Shared/Title"
 import Form from "react-bootstrap/Form"
+import { Button, Link } from "../imports"
 
 const SignIn = () => {
   const [email, setEmail] = useState("")
@@ -31,6 +32,17 @@ const SignIn = () => {
           <Form.Label>Password:</Form.Label>
           <Form.Control type="password" required onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password"></Form.Control>
         </Form.Group>
+        <div className="mb-3">
+          <Button>Sign In</Button> 
+        </div>
+        <div className="mb-3">
+          New customer? {" "} 
+          <Link to="/signup">Create your account</Link>
+        </div>
+        <div className="mb-3">
+          Forgot your Password?{" "} 
+          <Link to="/reset">Reset password</Link>
+        </div>
       </Form>
     </Container>
   )
