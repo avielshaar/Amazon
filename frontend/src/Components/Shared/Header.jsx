@@ -14,6 +14,8 @@ const Header = () => {
     ctxDispatch({type: USER_SIGNOUT})
     localStorage.removeItem('userInfo');
     localStorage.removeItem('cartItems');
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethods');
   }
   return (
     <header>
@@ -37,7 +39,7 @@ const Header = () => {
           {userInfo ? (
             <NavDropdown className="text-white" title={userInfo.name}>
               <NavDropdown.Divider />
-              <Link to="#signout" onClick={signoutHandler} className="dropdown item">
+              <Link to="#signout" onClick={signoutHandler} className="dropdown-item">
                 Sign out
               </Link>
             </NavDropdown>
