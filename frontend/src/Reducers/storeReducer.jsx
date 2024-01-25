@@ -6,7 +6,7 @@ const storeReducer = (state, action) => {
       return { ...state, userInfo: action.payload };
     }
     case USER_SIGNOUT: {
-      return { ...state, userInfo: null };
+      return { ...state, userInfo: null, cartItems: null };
     }
     case PRODUCT_ADD_TO_CART: {
       const newItem = action.payload;
