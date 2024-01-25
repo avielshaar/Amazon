@@ -10,6 +10,7 @@ import MessageBox from "../Components/Shared/MessageBox.jsx";
 import { Col, Row } from "../imports";
 import ProductDescription from "../components/DescriptionPage/ProductDescription";
 import CartDescription from "../components/DescriptionPage/CartDescription";
+import Title from "../Components/Shared/Title.jsx";
 
 const initialState = { loading: true, error: "", data: [] };
 
@@ -41,9 +42,9 @@ const Description = () => {
     navigate("/cart");
   }
 
-  return <div>
+  return <div><Title title = {data.title}/>
     {loading? <Loading /> : error? <MessageBox variant="danger">{error}</MessageBox> : (
-        <div>
+        <div>            
             <Row>
                 <Col md={6}>
                     <img width={400} src={data.image} alt={data.title}/>
@@ -52,7 +53,7 @@ const Description = () => {
                     <ProductDescription {...data}/> {/* data is product, maybe rename */}
                 </Col>
                 <Col md={3}>
-                    <CartDescription/>
+                    <CartDescription addToCart={addToCart} product={data}/>
                 </Col>
             </Row>
         </div>
