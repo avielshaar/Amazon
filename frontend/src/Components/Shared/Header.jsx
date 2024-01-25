@@ -13,6 +13,7 @@ const Header = () => {
   const signoutHandler = () => {
     ctxDispatch({type: USER_SIGNOUT})
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems');
   }
   return (
     <header>
