@@ -1,5 +1,6 @@
 import NavBar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
+import Badge from "react-bootstrap/Badge";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
@@ -9,14 +10,17 @@ import { Store } from "../../Store";
 import { USER_SIGNOUT } from "../../actions";
 const Header = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { userInfo } = state;
+  const {
+    userInfo,
+    cart: { cartItems },
+  } = state;
   const signoutHandler = () => {
-    ctxDispatch({type: USER_SIGNOUT})
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('cartItems');
-    localStorage.removeItem('shippingAddress');
-    localStorage.removeItem('paymentMethods');
-  }
+    ctxDispatch({ type: USER_SIGNOUT });
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("shippingAddress");
+    localStorage.removeItem("paymentMethods");
+  };
   return (
     <header>
       <NavBar bg="dark" variant="dark">
@@ -34,12 +38,17 @@ const Header = () => {
           <nav className="d-flex align-items-center justify-content-end me-2 ms-4">
             <Link to="/cart" className="nav-link">
               <i className="fa fa-shopping-cart text-white"></i>
+              {cartItems.length>0 && (<Badge pill bg = "danger">{cartItems.reduce((a, c) => a + c.quantity, 0)}</Badge>)}
             </Link>
           </nav>
           {userInfo ? (
             <NavDropdown className="text-white" title={userInfo.name}>
               <NavDropdown.Divider />
-              <Link to="#signout" onClick={signoutHandler} className="dropdown-item">
+              <Link
+                to="#signout"
+                onClick={signoutHandler}
+                className="dropdown-item"
+              >
                 Sign out
               </Link>
             </NavDropdown>
