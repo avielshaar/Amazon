@@ -7,10 +7,10 @@ const getProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
   const product = await Product.findById(req.params.id);
-  if (product._id) {
+  if (product) {
     res.send(product);
   } else {
-    res.status(404).send();
+    res.status(404).send({message: 'Product not found'});
   }
 };
 
