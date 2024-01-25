@@ -13,8 +13,10 @@ const addToCartHandler = async (product, cartItems, ctxDispatch) => {
 
   try {
     const { data } = await axios.get(`/api/v1/products/${product._id}`);
+
     if (data.countInStock < quantity) {
       alert("Sorry, product is out of stock");
+      console.log("At try addToCartHandler in if");
       return;
     }
     ctxDispatch({

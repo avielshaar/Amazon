@@ -18,6 +18,7 @@ const storeReducer = (state, action) => {
             item._id === existingItem._id ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
     default:
