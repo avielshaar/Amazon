@@ -1,5 +1,5 @@
-import axios from "axios";
-import { PRODUCT_ADD_TO_CART } from "./actions";
+import { axios } from "./imports.js";
+import { PRODUCT_ADD } from "./actions";
 
 const getError = (error) => {
   return error.message && error.response.data.message
@@ -20,7 +20,7 @@ const addToCartHandler = async (product, cartItems, ctxDispatch) => {
       return;
     }
     ctxDispatch({
-      type: PRODUCT_ADD_TO_CART,
+      type: PRODUCT_ADD,
       payload: { ...product, quantity },
     });
   } catch (error) {

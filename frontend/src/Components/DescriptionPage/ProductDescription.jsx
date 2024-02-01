@@ -1,4 +1,4 @@
-import { ListGroup, PropTypes } from "../../imports";
+import { PropTypes, ListGroup } from "../../imports.js";
 import Rating from "../Shared/Rating.jsx";
 
 const ProductDescription = ({ title, rating, price, description }) => {
@@ -10,9 +10,7 @@ const ProductDescription = ({ title, rating, price, description }) => {
       <ListGroup.Item>
         <Rating rating={rating.rate} numReviews={rating.count}></Rating>
       </ListGroup.Item>
-      <ListGroup.Item>
-        Price: ${price}
-      </ListGroup.Item>
+      <ListGroup.Item>Price: ${price}</ListGroup.Item>
       <ListGroup.Item>
         Description:<p className="lead">{description}</p>
       </ListGroup.Item>

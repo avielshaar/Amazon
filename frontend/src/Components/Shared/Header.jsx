@@ -1,19 +1,15 @@
-import NavBar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Badge from "react-bootstrap/Badge";
-import { LinkContainer } from "react-router-bootstrap";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { NavBar, Container, Badge, LinkContainer, Link, useLocation, useNavigate, NavDropdown, useContext,  } from "../../imports";
 import SearchBox from "./SearchBox";
-import { NavDropdown } from "../../imports";
-import { useContext } from "react";
 import { Store } from "../../Store";
 import { USER_SIGNOUT } from "../../actions";
+
+
 const Header = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { userInfo, cart: { cartItems } } = state;
-  const navigate = useNavigate()
-  const location = useLocation()
-
+  const {
+    userInfo,
+    cart: { cartItems },
+  } = state;
   const signoutHandler = () => {
     ctxDispatch({ type: USER_SIGNOUT });
     localStorage.removeItem("userInfo");
@@ -21,11 +17,20 @@ const Header = () => {
     localStorage.removeItem("shippingAddress");
     localStorage.removeItem("paymentMethods");
   };
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
     <header>
       <NavBar bg="dark" variant="dark">
         <Container>
-          <Link onClick={() => navigate(-1)}>{location.pathname!=='/'&&<i className="fa fa-arrow-left text-white align-arrow-right">Back</i>}</Link>
+          <Link onClick={() => navigate(-1)}>
+            {location.pathname !== "/" && (
+              <i className="fa fa-arrow-left text-white align-arrow-right">
+                {" "}
+                Back
+              </i>
+            )}
+          </Link>
           <LinkContainer to="/">
             <NavBar.Brand>
               <img

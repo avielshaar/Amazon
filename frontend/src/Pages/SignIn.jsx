@@ -1,11 +1,6 @@
-import { useContext, useState } from "react";
-import axios from "axios";
-import Container from "react-bootstrap/Container";
+import { useContext, useState, useEffect, useLocation, axios, Container, Button, Link, toast, Form, useNavigate } from "../imports.js";
 import Title from "../Components/Shared/Title";
-import Form from "react-bootstrap/Form";
-import { Button, Link, toast } from "../imports";
 import { getError } from "../utils";
-import { useNavigate } from "react-router-dom";
 import { Store } from "../Store";
 import { USER_SIGNIN } from "../actions";
 
@@ -13,7 +8,17 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { dispatch: ctxDispatch } = useContext(Store);
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const {userInfo} = state;
+  const { search } = useLocation();
+  const redirectUrl = new URLSearchParams(search);
+  const redirectValue = redirectUrl.get("redirect");
+  const redirect = redirectValue ? redirectValue : "/";
+  useEffect(() => {
+    if (userInfo)
+    navigate(redirect);
+  }, [navigate, redirect, userInfo])
+  
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -24,7 +29,7 @@ const SignIn = () => {
       });
       ctxDispatch({ type: USER_SIGNIN, payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
-      navigate("/");
+      navigate(redirect);
     } catch (error) {
       toast.error(getError(error));
     }
@@ -55,7 +60,7 @@ const SignIn = () => {
           <Button type="submit">Sign In</Button>
         </div>
         <div className="mb-3">
-          New customer? <Link to="/signup">Create your account</Link>
+          New customer? <Link to={`/signup?redirect=${redirect}`}>Create your account</Link>
         </div>
         <div className="mb-3">
           Forgot your Password? <Link to="/reset">Reset password</Link>

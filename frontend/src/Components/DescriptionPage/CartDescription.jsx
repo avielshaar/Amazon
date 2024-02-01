@@ -1,12 +1,4 @@
-import {
-  Badge,
-  Button,
-  Card,
-  Col,
-  ListGroup,
-  PropTypes,
-  Row,
-} from "../../imports";
+import { Badge, Button, Card, Col, ListGroup, PropTypes, Row } from "../../imports.js";
 
 const CartDescription = ({ product, addToCart }) => {
   return (
@@ -34,7 +26,9 @@ const CartDescription = ({ product, addToCart }) => {
           {product.countInStock > 0 && (
             <ListGroup.Item>
               <div className="d-grid">
-                <Button onClick={() => addToCart()} variant="primary">Add to Cart</Button>
+                <Button onClick={() => addToCart()} variant="primary">
+                  Add to Cart
+                </Button>
               </div>
             </ListGroup.Item>
           )}

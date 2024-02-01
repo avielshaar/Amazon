@@ -1,11 +1,7 @@
-import PropTypes from "prop-types";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 import Rating from "../Shared/Rating.jsx";
 import { Store } from "../../Store.jsx";
-import { useContext } from "react";
 import { addToCartHandler } from "../../utils.jsx";
+import { PropTypes, Card, Button, Link, useContext } from "../../imports.js";
 
 const Product = ({ product }) => {
   const { state, dispatch: ctxDispatch } = useContext(Store);

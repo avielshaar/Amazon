@@ -1,5 +1,5 @@
-import Alert from "react-bootstrap/Alert";
-import PropTypes from "prop-types";
+import { Alert, PropTypes } from "../../imports.js";
+
 const MessageBox = ({ variant, children }) => {
   return <Alert variant={variant || "info"}>{children}</Alert>;
 };

@@ -1,7 +1,6 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, axios } from "../imports.js";
 import Title from "../Components/Shared/Title";
 import homePageReducer from "../Reducers/homePageReducer";
-import axios from "axios";
 import Loading from "../Components/Shared/Loading";
 import MessageBox from "../Components/Shared/MessageBox";
 import Products from "../Components/HomePage/Products";

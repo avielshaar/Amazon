@@ -1,15 +1,12 @@
-import { useContext, useEffect, useReducer } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useReducer, useNavigate, useParams, axios, Row, Col } from "../imports.js";
 import { Store } from "../Store.jsx";
-import axios from "axios";
 import descriptionReducer from "../Reducers/descriptionReducer.jsx";
 import { GET_FAIL, GET_REQUEST, GET_SUCCESS } from "../actions";
 import { addToCartHandler, getError } from "../utils";
 import Loading from "../Components/Shared/Loading.jsx";
 import MessageBox from "../Components/Shared/MessageBox.jsx";
-import { Col, Row } from "../imports";
-import ProductDescription from "../components/DescriptionPage/ProductDescription";
-import CartDescription from "../components/DescriptionPage/CartDescription";
+import ProductDescription from "../components/DescriptionPage/ProductDescription.jsx";
+import CartDescription from "../Components/DescriptionPage/CartDescription.jsx";
 import Title from "../Components/Shared/Title.jsx";
 
 const initialState = { loading: true, error: "", data: [] };
