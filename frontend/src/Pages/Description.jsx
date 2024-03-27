@@ -5,7 +5,7 @@ import { GET_FAIL, GET_REQUEST, GET_SUCCESS } from "../actions";
 import { addToCartHandler, getError } from "../utils";
 import Loading from "../Components/Shared/Loading.jsx";
 import MessageBox from "../Components/Shared/MessageBox.jsx";
-import ProductDescription from "../components/DescriptionPage/ProductDescription.jsx";
+import ProductDescription from "../Components/DescriptionPage/ProductDescription.jsx"
 import CartDescription from "../Components/DescriptionPage/CartDescription.jsx";
 import Title from "../Components/Shared/Title.jsx";
 
